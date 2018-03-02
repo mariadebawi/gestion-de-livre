@@ -1,0 +1,72 @@
+<style>
+  .container {
+    margin: 28px auto 24px auto ;
+  }
+  
+    .details li {
+      list-style: none;
+    }
+    li {
+        margin-bottom:3px;  
+    }
+
+    .details{
+      margin-top: -32px ; ;
+    }
+
+    .row .book{
+      margin-top: 20px;
+    }
+
+    footer {
+    /* just for demo */
+    background-color: #F8F8F8;
+    border-top: 1px solid #E7E7E7;
+    text-align:center;
+    padding:20px;
+   /* just for demo */ 
+  
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 60px;
+    width: 100%;
+    }
+</style>
+
+
+<div class="container">    
+  <div class="jumbotron">
+    <div class="row">
+        <div class=" book col-md-4 col-xs-12 col-sm-6 col-lg-4">
+            <img src="https://i.ebayimg.com/images/g/ieMAAOSwiKlZ3QtJ/s-l300.jpg">
+        </div>
+        <div class="col-md-8 col-xs-12 col-sm-6 col-lg-8">
+            <div class="container" style="border-bottom:1px solid black">
+              <h2>Title :  {{ book.title }}</h2>
+            </div>
+              <hr>
+            <ul class="container details">
+              <li><p>ISBN : {{ book.isbn }}</p></li>
+              <li><p>Author :{{ book.author }}</p></li>
+              <li><p>Publisher : {{ book.publisher }}</p></li>
+              <li><p>Price : {{book.Price}}</p></li>
+              <li><p> Date Updated : {{ book.updated_date }}</p></li>
+                <br>
+              <div class="row">
+                  <div class="col-md-12">
+                    <a [routerLink]="['/book-edit', book._id]" class="btn btn-success "> EDIT</a>
+                    <button class="btn btn-danger" type="button" (click)="deleteBook(book._id)"> DELETE</button>
+                    <a [routerLink]="['/books']" class="btn btn-default"> Back to List</a>
+
+                  </div>
+                </div>
+            </ul>
+        </div>
+        <footer>Created by : Debawi maria LFI3 , Email:debawimariafsm.tn@hotmail.com</footer>
+    </div>
+  
+
+  </div>
+
+</div>                

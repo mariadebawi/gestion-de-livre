@@ -9,7 +9,7 @@ import { HttpClient } from '@angular/common/http';
   encapsulation: ViewEncapsulation.None
 })
 export class BookCreateComponent implements OnInit {
-
+  image ;
   book = {};
   fileToUpload: File = null;
 
@@ -20,10 +20,40 @@ export class BookCreateComponent implements OnInit {
   }
 
 
+  onFileChange(event) {
+    
+    if(event.target.files.length > 0) {
+
+      let file = event.target.files[0];
+     
+
+      var reader = new FileReader();
+
+      
+      reader.onload = function(){
+         localStorage.setItem("Data", reader.result);
+         
+       
+      };
+
+      reader.readAsDataURL(event.target.files[0]);
+   
+      
+
+    }
+   
+
+}
+
+
+
+
+
 
   saveBook() {
     this.http.post('/book', this.book)
       .subscribe(res => {
+        this.image=localStorage.getItem("Data");
           let id = res['_id'];
           this.router.navigate(['/book-details', id]);
         }, (err) => {
